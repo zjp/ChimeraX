@@ -22,7 +22,16 @@
 # copies, of the software or any revisions or derivations thereof.
 # === UCSF ChimeraX Copyright ===
 
+__version__ = "1.0"
+
+import os
+
 from chimerax.core.toolshed import BundleAPI
+
+
+def get_bin() -> str:
+    return os.path.join(os.path.dirname(__file__), "bin")
+
 
 class _MyAPI(BundleAPI):
 
@@ -30,6 +39,8 @@ class _MyAPI(BundleAPI):
     def register_command(command_name, logger):
         # 'register_command' is lazily called when the command is referenced
         from .moviecmd import register_movie_command
+
         register_movie_command(logger)
+
 
 bundle_api = _MyAPI()

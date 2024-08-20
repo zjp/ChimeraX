@@ -17,11 +17,6 @@ all:
 #
 # Set your various NEEDs above.
 #
-
-ifndef UBUNTU_DIST
-NEED_FFMPEG=1
-endif
-
 ifdef WIN32
 SUBDIRS += win32
 endif
@@ -29,13 +24,6 @@ endif
 ifdef FLATPAK_DIST
 NEED_RSYNC=1
 NEED_LIBGLU=1
-endif
-
-ifdef NEED_FFMPEG
-SUBDIRS += ffmpeg
-else
-ffmpeg.install:
-ffmpeg.app-install:
 endif
 
 ifdef NEED_RSYNC
@@ -56,7 +44,7 @@ endif
 .NOTPARALLEL:
 
 # keep in alphabetical order, dependencies go below
-SUBDIRS	+= ambertools cxservices openmm pips PyQt Python qtshim
+SUBDIRS	+= cxservices openmm pips PyQt Python qtshim
 
 
 # All needed subdirectories must be set by now.

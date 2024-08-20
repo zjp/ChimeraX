@@ -1,5 +1,5 @@
 PREREQ_MAKE = 1
-TOP	= ../..
+TOP	= ../../../..
 include $(TOP)/mk/config.make
 
 FFMPEG_VERSION = 3.2.4
@@ -95,6 +95,18 @@ FFMPEG_OPTS	+= --disable-ffserver
 endif
 endif
 
+ifdef USE_PREBUILT
+all: ffmpeg
+
+ffmpeg: $(FFMPEG_PREBUILT)
+	cp $(FFMPEG_PREBUILT) ffmpeg
+
+else
+all: ffmpeg
+
+ffmpeg: $(FFMPEG_EXE)
+	cp $(FFMPEG_EXE) ffmpeg
+endif
 
 ifdef USE_PREBUILT
 install: $(FFMPEG_PREBUILT)

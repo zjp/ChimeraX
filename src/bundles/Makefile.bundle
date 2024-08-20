@@ -60,6 +60,8 @@ ifdef INSTALL_TO_VENV
 WHEEL = $(wildcard dist/*.whl)
 endif
 
+DEPS ?=
+
 PYSRCS = $(wildcard src/*.py)
 # Some bundles (e.g. chem_group) need to add to PYSRCS
 .SECONDEXPANSION:
@@ -72,7 +74,7 @@ wheel: $$(PYSRCS)
 	fi
 
 # The space means install and app-install are the same
-install app-install: $$(PYSRCS)
+install app-install: $$(PYSRCS) $(DEPS)
 	if [ -z "$(APP_PYTHON_EXE)" ]; then \
 		echo "missing ChimeraX application's python"; exit 1; \
 	else \

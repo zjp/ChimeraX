@@ -1,5 +1,3 @@
-change_in_ffmpeg: &change_in_ffmpeg
-  - "prereqs/ffmpeg/**"
 change_in_qtshim: &change_in_qtshim
   - "prereqs/qtshim/**"
 change_in_libglu: &change_in_libglu

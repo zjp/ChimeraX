@@ -10,13 +10,12 @@ jobs:
       change_in_pyqt: ${{ steps.changes.outputs.change_in_pyqt }}
       change_in_python: ${{ steps.changes.outputs.change_in_python }}
       change_in_ambertools: ${{ steps.changes.outputs.change_in_ambertools }}
-      change_in_ffmpeg: ${{ steps.changes.outputs.change_in_ffmpeg }}
       change_in_libglu: ${{ steps.changes.outputs.change_in_libglu }}
       change_in_openmm: ${{ steps.changes.outputs.change_in_openmm }}
       change_in_qtshim: ${{ steps.changes.outputs.change_in_qtshim }}
       change_in_rsync: ${{ steps.changes.outputs.change_in_rsync }}
       change_in_win32: ${{ steps.changes.outputs.change_in_win32 }}
-      any_changed: ${{ steps.changes.outputs.change_in_pyqt == 'true' || steps.changes.outputs.change_in_python == 'true' || steps.changes.outputs.change_in_ambertools == 'true' || steps.changes.outputs.change_in_ffmpeg == 'true' || steps.changes.outputs.change_in_cxservicemexs == 'true' ||  steps.changes.outputs.change_in_libglu == 'true' || steps.changes.outputs.change_in_libglu == 'true' || steps.changes.outputs.change_in_openmm == 'true' || steps.changes.outputs.change_in_qtshim == 'true' || steps.changes.outputs.change_in_rsync == 'true' || steps.changes.outputs.change_in_win32 }}
+      any_changed: ${{ steps.changes.outputs.change_in_pyqt == 'true' || steps.changes.outputs.change_in_python == 'true' || steps.changes.outputs.change_in_ambertools == 'true' || steps.changes.outputs.change_in_cxservicemexs == 'true' ||  steps.changes.outputs.change_in_libglu == 'true' || steps.changes.outputs.change_in_libglu == 'true' || steps.changes.outputs.change_in_openmm == 'true' || steps.changes.outputs.change_in_qtshim == 'true' || steps.changes.outputs.change_in_rsync == 'true' || steps.changes.outputs.change_in_win32 }}
     steps:
       - uses: actions/checkout@v4
       - uses: dorny/paths-filter@v3
@@ -46,10 +45,6 @@ jobs:
       - name: Rebuild Ambertools
         if: needs.files-changed.outputs.change_in_ambertools == 'true'
         run: make -C prereqs/ambertools install
-
-      - name: Rebuild ffmpeg
-        if: needs.files-changed.outputs.change_in_ffmpeg == 'true'
-        run: make -C prereqs/ffmpeg install
 
       - name: Rebuild libglu
         if: needs.files-changed.outputs.change_in_libglu == 'true'
@@ -102,10 +97,6 @@ jobs:
         if: needs.files-changed.outputs.change_in_ambertools == 'true'
         run: source /opt/rh/gcc-toolset-10/enable && make -C prereqs/ambertools install
 
-      - name: Rebuild ffmpeg
-        if: needs.files-changed.outputs.change_in_ffmpeg == 'true'
-        run: source /opt/rh/gcc-toolset-10/enable && make -C prereqs/ffmpeg install
-
       - name: Rebuild libglu
         if: needs.files-changed.outputs.change_in_libglu == 'true'
         run: source /opt/rh/gcc-toolset-10/enable && make -C prereqs/libGLU install
@@ -146,10 +137,6 @@ jobs:
       - name: Rebuild Ambertools
         if: needs.files-changed.outputs.change_in_ambertools == 'true'
         run: make -C prereqs/ambertools install
-
-      - name: Rebuild ffmpeg
-        if: needs.files-changed.outputs.change_in_ffmpeg == 'true'
-        run: make -C prereqs/ffmpeg install
 
       - name: Rebuild libglu
         if: needs.files-changed.outputs.change_in_libglu == 'true'
@@ -199,10 +186,6 @@ jobs:
       - name: Rebuild Ambertools
         if: needs.files-changed.outputs.change_in_ambertools == 'true'
         run: make -C prereqs/ambertools install
-
-      - name: Rebuild ffmpeg
-        if: needs.files-changed.outputs.change_in_ffmpeg == 'true'
-        run: make -C prereqs/ffmpeg install
 
       - name: Rebuild libglu
         if: needs.files-changed.outputs.change_in_libglu == 'true'
