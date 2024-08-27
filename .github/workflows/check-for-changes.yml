@@ -32,6 +32,7 @@ jobs:
         run: make test
       - name: Install Pytest
         run: ./ChimeraX.app/bin/python3.11 -I -m pip install pytest pytest-cov
+<<<<<<< HEAD
       - name: Set up the repo for coverage reporting
         run: make prepare-coverage
       - name: Check whether ChimeraX.exe and python -m chimerax.core are equivalent
@@ -42,6 +43,17 @@ jobs:
         run: USE_COVERAGE=1 make pytest-app
       - name: Report coverage
         run: make report-coverage
+||||||| parent of 1011480bc (test coverage)
+      - name: Run Pytest
+        run: make pytest-with-coverage
+=======
+      - name: Run Pytest
+        run: make pytest-with-coverage
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+>>>>>>> 1011480bc (test coverage)
   build-and-test-rocky8-docker:
     needs:
       [rebuild-changed-prereqs, rebuild-changed-bundles, rebuild-changed-apps]
@@ -64,6 +76,7 @@ jobs:
         run: make test
       - name: Install Pytest
         run: ./ChimeraX.app/bin/python3.11 -I -m pip install pytest pytest-cov
+<<<<<<< HEAD
       - name: Set up the repo for coverage reporting
         run: make prepare-coverage
       - name: Check whether ChimeraX.exe and python -m chimerax.core are equivalent
@@ -74,6 +87,17 @@ jobs:
         run: USE_COVERAGE=1 make pytest-app
       - name: Report coverage
         run: make report-coverage
+||||||| parent of 1011480bc (test coverage)
+      - name: Run Pytest
+        run: make pytest-with-coverage
+=======
+      - name: Run Pytest
+        run: make pytest-with-coverage
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+>>>>>>> 1011480bc (test coverage)
   build-and-test-macos:
     needs:
       [rebuild-changed-prereqs, rebuild-changed-bundles, rebuild-changed-apps]
@@ -89,6 +113,7 @@ jobs:
         run: make test
       - name: Install Pytest
         run: ./ChimeraX.app/Contents/bin/python3.11 -I -m pip install pytest pytest-cov
+<<<<<<< HEAD
       - name: Set up the repo for coverage reporting
         run: make prepare-coverage
       - name: Check whether ChimeraX.exe and python -m chimerax.core are equivalent
@@ -99,6 +124,17 @@ jobs:
         run: USE_COVERAGE=1 make pytest-app
       - name: Report coverage
         run: make report-coverage
+||||||| parent of 1011480bc (test coverage)
+      - name: Run Pytest
+        run: make pytest-with-coverage
+=======
+      - name: Run Pytest
+        run: make pytest-with-coverage
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+>>>>>>> 1011480bc (test coverage)
   build-and-test-windows:
     needs:
       [rebuild-changed-prereqs, rebuild-changed-bundles, rebuild-changed-apps]
@@ -118,6 +154,7 @@ jobs:
         run: AUTOMATIC_DISCOVERY=1 . ./vsvars.sh && make test
       - name: Install Pytest
         run: ./ChimeraX.app/bin/python.exe -I -m pip install pytest pytest-cov
+<<<<<<< HEAD
       - name: Set up the repo for coverage reporting
         run: make prepare-coverage
       - name: Check whether ChimeraX.exe and python -m chimerax.core are equivalent
@@ -128,3 +165,14 @@ jobs:
         run: USE_COVERAGE=1 make pytest-app
       - name: Report coverage
         run: make report-coverage
+||||||| parent of 1011480bc (test coverage)
+      - name: Run Pytest
+        run: make pytest-with-coverage
+=======
+      - name: Run Pytest
+        run: make pytest-with-coverage
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+>>>>>>> 1011480bc (test coverage)
