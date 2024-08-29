@@ -149,9 +149,18 @@ jobs:
           msystem: MINGW64
           update: true
           install: git mingw-w64-x86_64-imagemagick mingw-w64-x86_64-binutils mingw-w64-x86_64-gcc mingw-w64-x86_64-gcc-objc mingw-w64-x86_64-gcc-fortran rsync patch unzip openssh make mingw-w64-x86_64-autotools
+<<<<<<< HEAD
       - run: AUTOMATIC_DISCOVERY=1 . ./vsvars.sh && MAKEOPTS="-j$(nproc)" make -j$(nproc) build-minimal
       - name: Run the legacy test suite
         run: AUTOMATIC_DISCOVERY=1 . ./vsvars.sh && make test
+||||||| parent of 67d908441 (test windows)
+      - run: GITHUB_ACTIONS_CI=1 . ./vsvars.sh && make build-minimal
+      - run: GITHUB_ACTIONS_CI=1 . ./vsvars.sh && make test
+=======
+      - uses: mxschmitt/action-tmate@v3
+      - run: GITHUB_ACTIONS_CI=1 . ./vsvars.sh && make build-minimal
+      - run: GITHUB_ACTIONS_CI=1 . ./vsvars.sh && make test
+>>>>>>> 67d908441 (test windows)
       - name: Install Pytest
         run: ./ChimeraX.app/bin/python.exe -I -m pip install pytest pytest-cov
 <<<<<<< HEAD
