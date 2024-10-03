@@ -19,5 +19,4 @@ jobs:
       - run: chown -R $(id -u):$(id -g) $PWD
       - run: ${PWD}/utils/set_up_centos.sh
       - run: source /opt/rh/gcc-toolset-10/enable && make -f Makefile.centos install
-      - run: make -f Makefile.centos 8 github-techpreview-package
       - uses: mxschmitt/action-tmate@v3
